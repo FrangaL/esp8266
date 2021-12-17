@@ -13,3 +13,6 @@ The clock can be calibrated via wifi. Access to 18650 lithium battery can be use
 The lead pins can be connected to other device modules for development. MicroUSB automatic programming function. Five-way buttons connected to five pins are equivalent to five buttons.
 
 ![esp8266](esp8266.jpg?raw=true "esp8266")
+esptool --port /dev/ttyUSB0 --baud 921600 read_flash 0x00000 0x400000 backup.img
+
+esptool --port /dev/ttyUSB0 --baud 921600 erase_flash
