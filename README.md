@@ -19,4 +19,4 @@ esptool --port /dev/ttyUSB0 --baud 921600 read_flash 0x00000 0x400000 backup.img
 
 esptool --port /dev/ttyUSB0 --baud 921600 erase_flash
 
-esptool --port /dev/ttyUSB0 run
+esptool --port /dev/ttyUSB0 --baud 921600 write_flash  -fm dio 0x0 esp8266-20191220-v1.12.bin
