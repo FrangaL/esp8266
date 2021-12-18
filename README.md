@@ -17,14 +17,15 @@ The lead pins can be connected to other device modules for development. MicroUSB
 ### Backup original firmware
 ```bash
 esptool --port /dev/ttyUSB0 --baud 921600 read_flash 0x00000 0x400000 backup.img
-
-esptool --port /dev/ttyUSB0 --baud 921600 erase_flash
 ```
 
 ### Install micropython
 
 ```bash
+# Note: v1.12-334 and newer (including v1.13) require an ESP8266 module with 2MiB of flash or more, and use littlefs as the filesystem by default. When upgrading from older firmware please backup your files first, and either erase all  flash before upgrading, or after upgrading execute uos.VfsLfs2.mkfs(bdev).
 wget https://micropython.org/resources/firmware/esp8266-20191220-v1.12.bin
+# Erase flash
+esptool --port /dev/ttyUSB0 --baud 921600 erase_flash
 
 esptool --port /dev/ttyUSB0 --baud 921600 write_flash  -fm dio 0x0 esp8266-20191220-v1.12.bin
 ```
