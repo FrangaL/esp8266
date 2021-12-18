@@ -14,9 +14,17 @@ The lead pins can be connected to other device modules for development. MicroUSB
 
 ![esp8266](esp8266.jpg?raw=true "esp8266")
 
-
+### Backup original firmware
+```bash
 esptool --port /dev/ttyUSB0 --baud 921600 read_flash 0x00000 0x400000 backup.img
 
 esptool --port /dev/ttyUSB0 --baud 921600 erase_flash
+```
+
+### Install micropython
+
+```bash
+wget https://micropython.org/resources/firmware/esp8266-20191220-v1.12.bin
 
 esptool --port /dev/ttyUSB0 --baud 921600 write_flash  -fm dio 0x0 esp8266-20191220-v1.12.bin
+```
